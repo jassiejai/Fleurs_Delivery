@@ -16,8 +16,34 @@ public class CustomerService {
     }
 
     public List<Customer> getCustomers(){
-
         List<Customer> customer = customerRepository.findAll();
         return customer;
     }
+
+    public Customer getCustomer(Long customerId){
+        Customer customer = customerRepository.getById(customerId);
+        return customer;
+    }
+
+    public Customer createCustomer(Customer customerObject){
+
+        Customer customer = customerRepository.findByName(customerObject.getFirstName());
+        return customerRepository.save(customerObject);
+
+    }
+
+    public Customer updateCustomer(Long customerId, String customerObject){
+
+        Customer updateCustomer = customerRepository.findById(customerId);
+        updateCustomer.setFirstName(customerObject);
+        updateCustomer.setLastName(customerObject);
+        updateCustomer.setPhoneNumber(customerObject);
+        updateCustomer.setAddress(customerObject);
+        updateCustomer.setEmailAddress(customerObject);
+        return customerRepository.save(updateCustomer);
+    }
+
+
+
+
 }
