@@ -6,6 +6,7 @@ import com.example.fleursdelivery.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -32,14 +33,14 @@ public class CustomerService {
 
     }
 
-    public Customer updateCustomer(Long customerId, String customerObject){
+    public Optional<Customer> updateCustomer(Long customerId, Customer customerObject){
 
-        Customer updateCustomer = customerRepository.findById(customerId);
-        updateCustomer.setFirstName(customerObject);
-        updateCustomer.setLastName(customerObject);
-        updateCustomer.setPhoneNumber(customerObject);
-        updateCustomer.setAddress(customerObject);
-        updateCustomer.setEmailAddress(customerObject);
+        Optional<Customer> updateCustomer = customerRepository.findById(customerId);
+        updateCustomer.get().setFirstName(customerObject.getFirstName());
+        updateCustomer.get().setLastName(customerObject.getLastName());
+        updateCustomer.get().setPhoneNumber(customerObject.getPhoneNumber());
+        updateCustomer.get().setAddress(customerObject.getAddress());
+        updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
         return customerRepository.save(updateCustomer);
     }
 
