@@ -38,14 +38,19 @@ public class CustomerController {
         return customerService.getCustomer(customerId);
     }
 
-    @PostMapping ("/customer/{customerId}")
+    @PostMapping ("/customer/")
     public Customer createCustomer(@RequestBody Customer customerObject){
         System.out.println("Created customer");
 
         return customerService.createCustomer(customerObject);
     }
 
+    @PutMapping ("/customer/{customerId}")
+    public Object updateCustomer(Long customerId, @RequestBody Customer customerObject){
+        System.out.println("Created customer");
 
+        return customerService.updateCustomer(customerId, customerObject);
+    }
 
 
 

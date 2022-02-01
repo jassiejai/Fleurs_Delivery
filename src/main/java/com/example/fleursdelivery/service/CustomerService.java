@@ -34,25 +34,25 @@ public class CustomerService {
 
     public Customer createCustomer(Customer customerObject){
 
-        Optional<Customer> customer = customerRepository.findById(customerObject.getId());
-        return customerRepository.save(customer).orElse(null);
+        Customer customer = customerRepository.findByName(customerObject);
+        return customerRepository.save(customer);
 
     }
 
-//    public Object updateCustomer(Long customerId, Customer customerObject){
-//
-//
-//        Optional<Customer> updateCustomer = customerRepository.findById(customerId);
-//
-//
-//        updateCustomer.get().setFirstName(customerObject.getFirstName());
-//        updateCustomer.get().setLastName(customerObject.getLastName());
-//        updateCustomer.get().setPhoneNumber(customerObject.getPhoneNumber());
-//        updateCustomer.get().setAddress(customerObject.getAddress());
-//        updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
-//        return customerRepository.save(updateCustomer);
-//
-//    }
+    public Object updateCustomer(Long customerId, Customer customerObject){
+
+
+        Optional<Customer> updateCustomer = customerRepository.findById(customerId);
+
+
+        updateCustomer.get().setFirstName(customerObject.getFirstName());
+        updateCustomer.get().setLastName(customerObject.getLastName());
+        updateCustomer.get().setPhoneNumber(customerObject.getPhoneNumber());
+        updateCustomer.get().setAddress(customerObject.getAddress());
+        updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
+        return customerRepository.save(updateCustomer.get());
+
+    }
 
 
 

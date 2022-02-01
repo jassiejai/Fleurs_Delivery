@@ -41,6 +41,14 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
+    public String toString(){
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + firstName + " "+ lastName + '\'' +
+                ", details ='" + phoneNumber + " " +   address + " " +  emailAddress + '\'' +
+                '}';
+    }
+
 
     public Long getId() {
         return id;
