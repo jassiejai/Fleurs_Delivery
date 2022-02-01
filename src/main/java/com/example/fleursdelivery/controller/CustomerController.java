@@ -10,18 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RequestMapping(path = "/api")
+//@RequestMapping(path = "/api")
 public class CustomerController {
 
 
-    private CustomerService customerService;
+//    private CustomerService customerService;
 
 
-    @GetMapping("/customers")
-    public List<Customer> getCustomers(){
-        System.out.println("Getting customers");
-        return customerService.getCustomers();
-    }
+//    @GetMapping("/customers")
+//    public List<Customer> getCustomers(){
+//        System.out.println("Getting customers");
+//        return customerService.getCustomers();
+//    }
 
 //    @GetMapping("/customer/{customerId}")
 //    public Optional getCustomer(@PathVariable Long customerId){
