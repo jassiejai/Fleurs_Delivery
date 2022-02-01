@@ -9,35 +9,35 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-//@Service
+@Service
 public class CustomerService {
 
-//    private CustomerRepository customerRepository;
-//
-//    @Autowired
-//    public void setCustomerRepository(CustomerRepository customerRepository){
-//        this.customerRepository=customerRepository;
-//    }
-//
-//
-//    public List<Customer> getCustomers(){
-//        List<Customer> customer = customerRepository.findAll();
-//        return customer;
-//    }
-//
-//
-//    public Customer getCustomer(Long customerId){
-//        Customer customer = customerRepository.getById(customerId);
-//        return customer;
-//    }
+    private CustomerRepository customerRepository;
 
-//
-//    public Optional<Customer> createCustomer(Customer customerObject){
-//
-//        Optional<Customer> customer = customerRepository.findById(customerObject.getId());
-//        return customerRepository.save(customer);
-//
-//    }
+    @Autowired
+    public void setCustomerRepository(CustomerRepository customerRepository){
+        this.customerRepository=customerRepository;
+    }
+
+
+    public List<Customer> getCustomers(){
+        List<Customer> allCustomer = customerRepository.findAll();
+        return allCustomer;
+    }
+
+
+    public Customer getCustomer(Long customerId){
+        Customer customer = customerRepository.getById(customerId);
+        return customer;
+    }
+
+
+    public Customer createCustomer(Customer customerObject){
+
+        Optional<Customer> customer = customerRepository.findById(customerObject.getId());
+        return customerRepository.save(customer).orElse(null);
+
+    }
 
 //    public Object updateCustomer(Long customerId, Customer customerObject){
 //
