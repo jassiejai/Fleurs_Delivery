@@ -1,6 +1,8 @@
 package com.example.fleursdelivery.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +26,17 @@ public class Order {
 
     @Column
     private String deliveryAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+    @JsonIgnore
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "flowerId")
+    @JsonIgnore
+    private Flower flower;
+
 
     public Order() {
     }
@@ -56,7 +69,7 @@ public class Order {
     }
 
     public String getCustomerName() {
-        return customerName;
+        return customer.getFirstName() +" " + customer.getLastName();
     }
 
     public void setCustomerName(String customerName) {
@@ -85,5 +98,21 @@ public class Order {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Flower getFlower() {
+        return flower;
+    }
+
+    public void setFlower(Flower flower) {
+        this.flower = flower;
     }
 }

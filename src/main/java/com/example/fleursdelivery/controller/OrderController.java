@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -31,7 +32,7 @@ public class OrderController {
 
     @PostMapping("/order/")
     public Order createOrder(@RequestBody Order orderObject){
-        System.out.println("Created customer");
+        System.out.println("Created Order");
 
         return orderService.createOrder(orderObject);
     }
@@ -39,7 +40,7 @@ public class OrderController {
     @PutMapping ("/order/{orderId}")
     public Object updateOrder(@PathVariable(
             value = "orderId") Long orderId, @RequestBody Order orderObject){
-        System.out.println("Created customer");
+        System.out.println("Updated order");
 
         return orderService.updateOrder(orderId, orderObject);
     }
@@ -47,7 +48,7 @@ public class OrderController {
     @DeleteMapping ("/order/{orderId}")
     public void deleteOrder(@PathVariable(value = "orderId") Long customerId){
 
-        System.out.println("Deleted customer");
+        System.out.println("Deleted order");
 
         orderService.deleteOrder(customerId);
     }

@@ -26,9 +26,10 @@ public class OrderService{
 
 
     public Order getCustomerOrder(Long orderId){
-         Order orderCustomer = orderRepository.getById(orderId);
 
-         return orderCustomer;
+        Optional<Order> orderCustomer = orderRepository.findById(orderId);
+
+         return orderCustomer.get();
 
     }
 
