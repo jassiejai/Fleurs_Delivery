@@ -1,10 +1,9 @@
 package com.example.fleursdelivery.service;
 
+import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class OrderService{
@@ -12,21 +11,20 @@ public class OrderService{
     private OrderRepository orderRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
+    public void setOrderRepository(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
 
-        public List<OrderRepository> getAllOrders(){
-        List<OrderRepository> allOrders = orderRepository.findAll();
+        public Order getAllOrders(){
+        Order allOrders = (Order) orderRepository.findAll();
         return allOrders;
     }
-//
-//
-//    public Customer getCustomer(Long customerId){
-//        Customer customer = customerRepository.getById(customerId);
-//        return customer;
-//    }
+
+
+    public Order getCustomerOrder(Long orderId){
+         Order orderCudtomer = orderRepository.getById(orderId);
+    }
 //
 //
 //    public Customer createCustomer(Customer customerObject){
