@@ -5,6 +5,9 @@ import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class OrderService{
 
@@ -16,46 +19,48 @@ public class OrderService{
     }
 
 
-        public Order getAllOrders(){
-        Order allOrders = (Order) orderRepository.findAll();
+        public List<Order> getAllOrders(){
+        List<Order> allOrders = orderRepository.findAll();
         return allOrders;
     }
 
 
     public Order getCustomerOrder(Long orderId){
-         Order orderCudtomer = orderRepository.getById(orderId);
+         Order orderCustomer = orderRepository.getById(orderId);
+
+         return orderCustomer;
+
     }
-//
-//
-//    public Customer createCustomer(Customer customerObject){
-//
-//        Customer crtCustomer = customerRepository.save(customerObject);
-////                findByPhoneNumber(customerObject.getPhoneNumber());
-//        return customerRepository.save(crtCustomer);
-//
-//    }
-//
-//    public Object updateCustomer(Long customerId, Customer customerObject){
-//
-//
-//        Optional<Customer> updateCustomer = customerRepository.findById(customerId);
-//
-//
-//        updateCustomer.get().setFirstName(customerObject.getFirstName());
-//        updateCustomer.get().setLastName(customerObject.getLastName());
-//        updateCustomer.get().setPhoneNumber(customerObject.getPhoneNumber());
-//        updateCustomer.get().setAddress(customerObject.getAddress());
-//        updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
-//        return customerRepository.save(updateCustomer.get());
-//
-//    }
-//
-//    public void deleteCustomer(Long customerId){
-//
-//        Customer dltCustomer = customerRepository.getById(customerId);
-//
-////        customerRepository.delete(dltCustomer.get());
-//        customerRepository.delete(dltCustomer);
-//    }
-//
+
+
+    public Order createOrder (Order orderObject){
+
+        Order crtOrder = orderRepository.save(orderObject);
+//                findByPhoneNumber(customerObject.getPhoneNumber());
+        return orderRepository.save(crtOrder);
+
+    }
+
+    public Object updateOrder(Long customerId, Order customerObject){
+
+
+        Optional<Order> updateOrder = orderRepository.findById(customerId);
+
+
+        updateOrder.get().setCustomerName(customerObject.getCustomerName());
+        updateOrder.get().setTimeAndDate(customerObject.getTimeAndDate());
+        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
+        updateOrder.get().setDeliveryAddress(customerObject.getDeliveryAddress());
+        return orderRepository.save(updateOrder.get());
+
+    }
+
+    public void deleteOrder(Long orderId){
+
+        Order dltOrder = orderRepository.getById(orderId);
+
+//        customerRepository.delete(dltCustomer.get());
+        orderRepository.delete(dltOrder);
+    }
+
 }

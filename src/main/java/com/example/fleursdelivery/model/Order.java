@@ -36,6 +36,17 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerName='" + customerName + '\'' +
+                ", datetime='" + datetime + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,11 +63,11 @@ public class Order {
         this.customerName = customerName;
     }
 
-    public String getTime() {
+    public String getTimeAndDate() {
         return datetime;
     }
 
-    public void setTime(String datetime) {
+    public void setTimeAndDate(String datetime) {
         this.datetime = datetime;
     }
 
