@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -17,7 +15,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
 
@@ -25,6 +23,10 @@ public class CustomerController {
     public String hello(){
         return "Hello world";
     }
+
+
+
+
     @GetMapping("/customers")
     public List<Customer> getCustomers(){
         System.out.println("Getting customers");
@@ -38,7 +40,7 @@ public class CustomerController {
         return customerService.getCustomer(customerId);
     }
 
-    @PostMapping ("/customer/")
+    @PostMapping("/customer/")
     public Customer createCustomer(@RequestBody Customer customerObject){
         System.out.println("Created customer");
 
@@ -46,11 +48,21 @@ public class CustomerController {
     }
 
     @PutMapping ("/customer/{customerId}")
-    public Object updateCustomer(Long customerId, @RequestBody Customer customerObject){
+    public Object updateCustomer(@PathVariable(
+            value = "customerId") Long customerId, @RequestBody Customer customerObject){
         System.out.println("Created customer");
 
         return customerService.updateCustomer(customerId, customerObject);
     }
+
+    @DeleteMapping ("/customer/{customerId}")
+    public void deleteCustomer(@PathVariable(value = "customerId") Long customerId){
+
+        System.out.println("Deleted customer");
+
+        customerService.deleteCustomer(customerId);
+    }
+
 
 
 

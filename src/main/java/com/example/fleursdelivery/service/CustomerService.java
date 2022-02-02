@@ -34,8 +34,9 @@ public class CustomerService {
 
     public Customer createCustomer(Customer customerObject){
 
-        Customer customer = customerRepository.findByName(customerObject);
-        return customerRepository.save(customer);
+        Customer crtCustomer = customerRepository.save(customerObject);
+//                findByPhoneNumber(customerObject.getPhoneNumber());
+        return customerRepository.save(crtCustomer);
 
     }
 
@@ -52,6 +53,14 @@ public class CustomerService {
         updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
         return customerRepository.save(updateCustomer.get());
 
+    }
+
+    public void deleteCustomer(Long customerId){
+
+        Customer dltCustomer = customerRepository.getById(customerId);
+
+//        customerRepository.delete(dltCustomer.get());
+        customerRepository.delete(dltCustomer);
     }
 
 

@@ -19,7 +19,7 @@ public class Customer {
     private String lastName;
 
     @Column
-    private String phoneNumber;
+    private Long phoneNumber;
 
     @Column
     private String address;
@@ -32,7 +32,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long id, String firstName, String lastName, String phoneNumber, String address, String emailAddress) {
+    public Customer(Long id, String firstName, String lastName, Long phoneNumber, String address, String emailAddress) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -74,11 +74,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
