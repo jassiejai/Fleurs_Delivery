@@ -35,9 +35,13 @@ public class CustomerService {
     }
 
 
-    public Customer getCustomer(Long customerId){
+    public String getCustomer(Long customerId){
         Customer customer = customerRepository.getById(customerId);
-        return customer;
+
+        String hello = "helloWorld";
+        System.out.println(hello);
+        return customer.getFirstName();
+
     }
 
 

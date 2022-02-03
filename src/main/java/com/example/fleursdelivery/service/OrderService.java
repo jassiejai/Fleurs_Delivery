@@ -37,6 +37,7 @@ public class OrderService{
 
         Order orderCustomer = orderRepository.getById(orderId);
 
+        System.out.println(orderCustomer);
          return orderCustomer;
 
     }
