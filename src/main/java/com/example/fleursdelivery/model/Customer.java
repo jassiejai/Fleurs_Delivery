@@ -2,8 +2,11 @@ package com.example.fleursdelivery.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name = "customer")
@@ -29,8 +32,9 @@ public class Customer {
     @Column
     private String emailAddress;
 
-
-
+    @OneToMany(mappedBy = "customer")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Order> orderList;
 
     public Customer() {
     }
@@ -101,4 +105,11 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
 }

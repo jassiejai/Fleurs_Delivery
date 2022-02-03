@@ -1,5 +1,7 @@
 package com.example.fleursdelivery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,7 @@ public class Flower {
 
     @Column
     private Long floNumber;
+
 
     public Flower() {
     }
@@ -60,5 +63,18 @@ public class Flower {
 
     public void setFloNumber(Long floNumber) {
         this.floNumber = floNumber;
+    }
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn (name = "orderId")
+    private Order orders;
+
+    public Order getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Order orders) {
+        this.orders = orders;
     }
 }
