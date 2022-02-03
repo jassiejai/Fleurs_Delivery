@@ -21,7 +21,13 @@ public class CustomerService {
         this.customerRepository=customerRepository;
     }
 
+
     private OrderRepository orderRepository;
+
+    @Autowired
+    public void setOrderRepository(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
     public List<Customer> getCustomers(){
         List<Customer> allCustomer = customerRepository.findAll();

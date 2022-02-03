@@ -22,7 +22,11 @@ public class CustomerController {
 
     @GetMapping("/helloWorld")
     public String hello(){
-        return "Hello wor
+        return "Hello world";
+    }
+
+
+
     @GetMapping("/customers")
     public List<Customer> getCustomers(){
         System.out.println("Getting customers");
