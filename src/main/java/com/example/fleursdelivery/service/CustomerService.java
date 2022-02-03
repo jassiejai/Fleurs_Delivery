@@ -87,7 +87,6 @@ public class CustomerService {
     public Object updateOrder(Long customerId, Order customerObject){
 
 
-        Customer customer = customerRepository.getById(customerId);
         Optional<Order> updateOrder = orderRepository.findById(customerId);
 
 

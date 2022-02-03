@@ -1,6 +1,7 @@
 package com.example.fleursdelivery.service;
 
 import com.example.fleursdelivery.model.Order;
+import com.example.fleursdelivery.repository.FlowerRepository;
 import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,14 @@ public class OrderService{
         this.orderRepository = orderRepository;
     }
 
+    private FlowerRepository flowerRepository;
 
-        public List<Order> getAllOrders(){
+    @Autowired
+    public void setFlowerRepository(FlowerRepository flowerRepository) {
+        this.flowerRepository = flowerRepository;
+    }
+
+    public List<Order> getAllOrders(){
         List<Order> allOrders = orderRepository.findAll();
         return allOrders;
     }
@@ -27,9 +34,9 @@ public class OrderService{
 
     public Order getCustomerOrder(Long orderId){
 
-        Optional<Order> orderCustomer = orderRepository.findById(orderId);
+        Order orderCustomer = orderRepository.getById(orderId);
 
-         return orderCustomer.get();
+         return orderCustomer;
 
     }
 
