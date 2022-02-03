@@ -69,9 +69,7 @@ public class Order {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customer.getFirstName() +" " + customer.getLastName();
-    }
+    public String getCustomerName() {return customerName;}
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;

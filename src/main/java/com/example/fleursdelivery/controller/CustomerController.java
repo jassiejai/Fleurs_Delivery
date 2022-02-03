@@ -1,6 +1,7 @@
 package com.example.fleursdelivery.controller;
 
 import com.example.fleursdelivery.model.Customer;
+import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +64,22 @@ public class CustomerController {
         customerService.deleteCustomer(customerId);
     }
 
+    @PostMapping("/customer/{customerId}/order/")
+    public Order createOrder(@PathVariable (value = "customerId")Long customerId,
+                             @RequestBody Order orderObject ){
+        System.out.println("Created Order");
 
+        return customerService.createOrder(customerId,orderObject);
+    }
+
+    @PutMapping ("/customer/{customerId}/order/{orderId}")
+    public Object updateOrder( @PathVariable(value = "customerId") String customerId,
+                               @PathVariable(value = "orderId") Long orderId,
+                               @RequestBody Order orderObject){
+        System.out.println("Updated order");
+
+        return customerService.updateOrder(orderId, orderObject);
+    }
 
 
 

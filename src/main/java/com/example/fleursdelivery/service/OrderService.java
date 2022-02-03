@@ -34,27 +34,27 @@ public class OrderService{
     }
 
 
-    public Order createOrder (Order orderObject){
-
-        Order crtOrder = orderRepository.save(orderObject);
-//                findByPhoneNumber(customerObject.getPhoneNumber());
-        return orderRepository.save(crtOrder);
-
-    }
-
-    public Object updateOrder(Long customerId, Order customerObject){
-
-
-        Optional<Order> updateOrder = orderRepository.findById(customerId);
-
-
-        updateOrder.get().setCustomerName(customerObject.getCustomerName());
-        updateOrder.get().setTimeAndDate(customerObject.getTimeAndDate());
-        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
-        updateOrder.get().setDeliveryAddress(customerObject.getDeliveryAddress());
-        return orderRepository.save(updateOrder.get());
-
-    }
+//    public Order createOrder (Order orderObject){
+//
+//        Order crtOrder = orderRepository.save(orderObject);
+////                findByPhoneNumber(customerObject.getPhoneNumber());
+//        return orderRepository.save(crtOrder);
+//
+//    }
+//
+//    public Object updateOrder(Long customerId, Order customerObject){
+//
+//
+//        Optional<Order> updateOrder = orderRepository.findById(customerId);
+//
+//
+//        updateOrder.get().setCustomerName(customerObject.getCustomerName());
+//        updateOrder.get().setTimeAndDate(customerObject.getTimeAndDate());
+//        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
+//        updateOrder.get().setDeliveryAddress(customerObject.getDeliveryAddress());
+//        return orderRepository.save(updateOrder.get());
+//
+//    }
 
     public void deleteOrder(Long orderId){
 

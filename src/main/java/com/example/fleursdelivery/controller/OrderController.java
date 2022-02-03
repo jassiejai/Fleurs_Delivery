@@ -30,20 +30,6 @@ public class OrderController {
         return orderService.getCustomerOrder(orderId);
     }
 
-    @PostMapping("/order/")
-    public Order createOrder(@RequestBody Order orderObject){
-        System.out.println("Created Order");
-
-        return orderService.createOrder(orderObject);
-    }
-
-    @PutMapping ("/order/{orderId}")
-    public Object updateOrder(@PathVariable(
-            value = "orderId") Long orderId, @RequestBody Order orderObject){
-        System.out.println("Updated order");
-
-        return orderService.updateOrder(orderId, orderObject);
-    }
 
     @DeleteMapping ("/order/{orderId}")
     public void deleteOrder(@PathVariable(value = "orderId") Long customerId){

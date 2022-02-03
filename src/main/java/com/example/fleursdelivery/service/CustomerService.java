@@ -2,7 +2,9 @@ package com.example.fleursdelivery.service;
 
 
 import com.example.fleursdelivery.model.Customer;
+import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.repository.CustomerRepository;
+import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class CustomerService {
         this.customerRepository=customerRepository;
     }
 
+    private OrderRepository orderRepository;
 
     public List<Customer> getCustomers(){
         List<Customer> allCustomer = customerRepository.findAll();
@@ -63,6 +66,32 @@ public class CustomerService {
         customerRepository.delete(dltCustomer);
     }
 
+    public Order createOrder (Long customerId, Order orderObject){
+
+        Customer customer = customerRepository.getById(customerId);
+
+        Order crtOrder = orderRepository.save(orderObject);
+
+        crtOrder.setCustomerName(customer.getFirstName() + " " + customer.getLastName());
+        crtOrder.setCustomer(customer);
+        return orderRepository.save(crtOrder);
+
+    }
+
+    public Object updateOrder(Long customerId, Order customerObject){
+
+
+        Customer customer = customerRepository.getById(customerId);
+        Optional<Order> updateOrder = orderRepository.findById(customerId);
+
+
+
+        updateOrder.get().setTimeAndDate(customerObject.getTimeAndDate());
+        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
+        updateOrder.get().setDeliveryAddress(customerObject.getDeliveryAddress());
+        return orderRepository.save(updateOrder.get());
+
+    }
 
 
 
