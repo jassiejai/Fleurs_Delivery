@@ -35,7 +35,7 @@ public class Order {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @OneToMany(mappedBy = "order", orphanRemoval = true)
+    @OneToMany(mappedBy = "orders", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Flower> flowerList;
 
