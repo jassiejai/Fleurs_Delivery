@@ -1,6 +1,6 @@
 # Fleurs_Deliver
 
->A flower shop that has a database that is used for delivery orders
+>Jassies fleur shop has created a database that is used for delivery orders. Below are some user stories that you are able to access on the database.
 
 
 ### User Stories
