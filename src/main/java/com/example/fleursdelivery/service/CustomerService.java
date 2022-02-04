@@ -35,12 +35,11 @@ public class CustomerService {
     }
 
 
-    public String getCustomer(Long customerId){
-        Customer customer = customerRepository.getById(customerId);
+    public Customer getCustomer(Long customerId){
 
-        String hello = "helloWorld";
-        System.out.println(hello);
-        return customer.getFirstName();
+        Customer customer = customerRepository.getById(customerId);
+        
+        return customer;
 
     }
 
@@ -82,6 +81,7 @@ public class CustomerService {
 
         Order crtOrder = orderRepository.save(orderObject);
 
+        crtOrder.setPhoneNumber(customer.getPhoneNumber());
         crtOrder.setCustomerName(customer.getFirstName() + " " + customer.getLastName());
         crtOrder.setCustomer(customer);
         return orderRepository.save(crtOrder);
