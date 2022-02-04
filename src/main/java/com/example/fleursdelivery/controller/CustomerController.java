@@ -80,7 +80,13 @@ public class CustomerController {
 
         return customerService.updateOrder(orderId, orderObject);
     }
+    @DeleteMapping ("/order/{orderId}")
+    public void deleteOrder(@PathVariable(value = "orderId") Long orderId){
 
+        System.out.println("Deleted order of " + orderId);
+
+        customerService.deleteOrder(orderId);
+    }
 
 
 

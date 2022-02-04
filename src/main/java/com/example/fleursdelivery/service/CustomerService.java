@@ -124,7 +124,13 @@ public class CustomerService {
         return orderRepository.save(updateOrder.get());
 
     }
+    public Order deleteOrder(Long orderId){
 
+        Order dltOrder = orderRepository.getById(orderId);
+
+        return dltOrder;
+
+    }
 
 
 }

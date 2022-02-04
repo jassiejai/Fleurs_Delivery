@@ -33,13 +33,13 @@ public class OrderController {
     }
 
 
-    @DeleteMapping ("/order/{orderId}")
-    public void deleteOrder(@PathVariable(value = "orderId") Long customerId){
-
-        System.out.println("Deleted order");
-
-        orderService.deleteOrder(customerId);
-    }
+//    @DeleteMapping ("/order/{orderId}")
+//    public void deleteOrder(@PathVariable(value = "orderId") Long orderId){
+//
+//        System.out.println("Deleted order of " + orderId);
+//
+//        orderService.deleteOrder(orderId);
+//    }
 
 //    @GetMapping(path = "/flowers")
 //    public List<Flower> getAllFlower(){

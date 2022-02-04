@@ -1,7 +1,6 @@
 package com.example.fleursdelivery.service;
 
 import com.example.fleursdelivery.exceptions.InformationNotFound;
-import com.example.fleursdelivery.model.Flower;
 import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,17 +44,20 @@ public class OrderService{
         }
 
     }
-    public void deleteOrder(Long orderId){
+//    public Order deleteOrder(Long orderId){
+//
+//        Order dltOrder = orderRepository.getById(orderId);
+//
+//        return dltOrder;
+////        customerRepository.delete(dltCustomer.get());
+//
+////        if(dltOrder == null){
+////            throw new InformationNotFound("Could not delete Id "+ orderId);
+////        } else {
+////            orderRepository.delete(dltOrder);
+////        }
+//    }
 
-        Order dltOrder = orderRepository.getById(orderId);
-
-//        customerRepository.delete(dltCustomer.get());
-
-//        if(dltOrder == null){
-//            throw new InformationNotFound("Could not delete Id "+ orderId);
-//        } else {
-//            orderRepository.delete(dltOrder);
-//        }
     }
 
 
@@ -91,4 +93,4 @@ public class OrderService{
 
 
 
-}
+
