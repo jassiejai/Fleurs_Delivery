@@ -93,10 +93,11 @@ public class CustomerService {
 
         Optional<Order> updateOrder = orderRepository.findById(customerId);
 
+        updateOrder.get().setFlowerList(customerObject.getFlowerList());
 
 
         updateOrder.get().setTimeAndDate(customerObject.getTimeAndDate());
-        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
+//        updateOrder.get().setPhoneNumber(customerObject.getPhoneNumber());
         updateOrder.get().setDeliveryAddress(customerObject.getDeliveryAddress());
         return orderRepository.save(updateOrder.get());
 
