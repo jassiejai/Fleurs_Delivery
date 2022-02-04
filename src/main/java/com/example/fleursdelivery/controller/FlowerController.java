@@ -1,8 +1,6 @@
 package com.example.fleursdelivery.controller;
 
 import com.example.fleursdelivery.model.Flower;
-import com.example.fleursdelivery.model.Order;
-import com.example.fleursdelivery.service.FlowerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

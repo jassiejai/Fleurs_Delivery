@@ -1,5 +1,7 @@
 package com.example.fleursdelivery.service;
 
+import com.example.fleursdelivery.exceptions.InformationIsFound;
+import com.example.fleursdelivery.exceptions.InformationNotFound;
 import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,25 @@ public class OrderService{
 
     public List<Order> getAllOrders(){
         List<Order> allOrders = orderRepository.findAll();
-        return allOrders;
+
+        if(allOrders.isEmpty()){
+           throw new InformationNotFound("No orders could be found");
+        } else {
+            return allOrders;
+        }
+
     }
 
 
-    public Order getCustomerOrder(Long orderId){
+    public Optional<Order> getCustomerOrder(Long orderId){
 
-        Order orderCustomer = orderRepository.getById(orderId);
+        Optional<Order> orderCustomer = orderRepository.findById(orderId);
 
-         return orderCustomer;
+        if(orderCustomer.isPresent()){
+            return orderCustomer;
+        } else {
+            throw new InformationNotFound("Order could not be found");
+        }
 
     }
     public void deleteOrder(Long orderId){

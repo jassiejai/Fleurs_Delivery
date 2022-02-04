@@ -1,6 +1,5 @@
 package com.example.fleursdelivery.controller;
 
-import com.example.fleursdelivery.model.Flower;
 import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/{orderId}")
-    public Order getCustomerOrder(@PathVariable Long orderId){
+    public Optional<Order> getCustomerOrder(@PathVariable Long orderId){
         System.out.println("Got order");
 
         return orderService.getCustomerOrder(orderId);
