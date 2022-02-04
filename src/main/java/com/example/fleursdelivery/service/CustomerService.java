@@ -1,6 +1,7 @@
 package com.example.fleursdelivery.service;
 
 
+import com.example.fleursdelivery.exceptions.InformationIsFound;
 import com.example.fleursdelivery.exceptions.InformationNotFound;
 import com.example.fleursdelivery.model.Customer;
 import com.example.fleursdelivery.model.Order;
@@ -57,25 +58,35 @@ public class CustomerService {
 
     public Customer createCustomer(Customer customerObject){
 
-        Customer crtCustomer = customerRepository.save(customerObject);
+//        Customer crtCustomer = customerRepository.save(customerObject);
 //                findByPhoneNumber(customerObject.getPhoneNumber());
-        return customerRepository.save(crtCustomer);
 
+//        if(customerObject != null){
+//            throw new InformationIsFound("Customer already exist");
+//        }
+//        else {
+            return customerRepository.save(customerObject);
+
+//        }
     }
 
     public Object updateCustomer(Long customerId, Customer customerObject){
 
 
-        Optional<Customer> updateCustomer = customerRepository.findById(customerId);
+        Customer updateCustomer = customerRepository.getById(customerId);
 
 
-        updateCustomer.get().setFirstName(customerObject.getFirstName());
-        updateCustomer.get().setLastName(customerObject.getLastName());
-        updateCustomer.get().setPhoneNumber(customerObject.getPhoneNumber());
-        updateCustomer.get().setAddress(customerObject.getAddress());
-        updateCustomer.get().setEmailAddress(customerObject.getEmailAddress());
-        return customerRepository.save(updateCustomer.get());
+//        if(updateCustomer == null){
+//            throw new InformationNotFound("Customer " + customerId + " not found");
+//        } else {
 
+            updateCustomer.setFirstName(customerObject.getFirstName());
+            updateCustomer.setLastName(customerObject.getLastName());
+            updateCustomer.setPhoneNumber(customerObject.getPhoneNumber());
+            updateCustomer.setAddress(customerObject.getAddress());
+            updateCustomer.setEmailAddress(customerObject.getEmailAddress());
+            return customerRepository.save(updateCustomer);
+//        }
     }
 
     public void deleteCustomer(Long customerId){
