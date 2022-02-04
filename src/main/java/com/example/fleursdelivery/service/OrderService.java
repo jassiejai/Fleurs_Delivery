@@ -1,7 +1,6 @@
 package com.example.fleursdelivery.service;
 
 import com.example.fleursdelivery.model.Order;
-import com.example.fleursdelivery.repository.FlowerRepository;
 import com.example.fleursdelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +18,6 @@ public class OrderService{
         this.orderRepository = orderRepository;
     }
 
-    private FlowerRepository flowerRepository;
-
-    @Autowired
-    public void setFlowerRepository(FlowerRepository flowerRepository) {
-        this.flowerRepository = flowerRepository;
-    }
 
 
     public List<Order> getAllOrders(){
@@ -37,9 +30,15 @@ public class OrderService{
 
         Order orderCustomer = orderRepository.getById(orderId);
 
-        System.out.println(orderCustomer);
          return orderCustomer;
 
+    }
+    public void deleteOrder(Long orderId){
+
+        Order dltOrder = orderRepository.getById(orderId);
+
+//        customerRepository.delete(dltCustomer.get());
+        orderRepository.delete(dltOrder);
     }
 
 
@@ -65,12 +64,8 @@ public class OrderService{
 //
 //    }
 
-    public void deleteOrder(Long orderId){
 
-        Order dltOrder = orderRepository.getById(orderId);
 
-//        customerRepository.delete(dltCustomer.get());
-        orderRepository.delete(dltOrder);
-    }
+
 
 }

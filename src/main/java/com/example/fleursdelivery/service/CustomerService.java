@@ -38,7 +38,7 @@ public class CustomerService {
     public Customer getCustomer(Long customerId){
 
         Customer customer = customerRepository.getById(customerId);
-        
+
         return customer;
 
     }

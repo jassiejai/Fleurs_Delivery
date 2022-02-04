@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{customerId}")
-    public String getCustomer(@PathVariable Long customerId){
+    public Customer getCustomer(@PathVariable Long customerId){
         System.out.println("Got customer");
 
         return customerService.getCustomer(customerId);
