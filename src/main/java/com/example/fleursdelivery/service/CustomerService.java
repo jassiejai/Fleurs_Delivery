@@ -41,14 +41,14 @@ public class CustomerService {
     }
 
 
-    public Customer getCustomer(Long customerId){
+    public Optional<Customer> getCustomer(Long customerId){
 
-        Customer customer = customerRepository.getById(customerId);
+       Optional<Customer> customer = customerRepository.findById(customerId);
 
-        if(customer.){
-            throw new InformationNotFound("No customers where found");
-        } else {
+        if(customer.isPresent()){
             return customer;
+        } else {
+            throw new InformationNotFound("No customer was found with the Id of " + customerId);
         }
 
 
