@@ -51,12 +51,11 @@ public class OrderService{
 
 //        customerRepository.delete(dltCustomer.get());
 
-        if(dltOrder == null){
-
-            throw new InformationNotFound("Could not delete Id "+ orderId);
-        } else {
-            orderRepository.delete(dltOrder);
-        }
+//        if(dltOrder == null){
+//            throw new InformationNotFound("Could not delete Id "+ orderId);
+//        } else {
+//            orderRepository.delete(dltOrder);
+//        }
     }
 
 
