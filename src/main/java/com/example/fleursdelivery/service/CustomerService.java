@@ -1,6 +1,7 @@
 package com.example.fleursdelivery.service;
 
 
+import com.example.fleursdelivery.exceptions.InformationNotFound;
 import com.example.fleursdelivery.model.Customer;
 import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.repository.CustomerRepository;
@@ -31,7 +32,12 @@ public class CustomerService {
 
     public List<Customer> getCustomers(){
         List<Customer> allCustomer = customerRepository.findAll();
+
+        if(allCustomer.isEmpty()){
+            throw new InformationNotFound("No customers where found");
+        } else {
         return allCustomer;
+        }
     }
 
 
@@ -39,7 +45,12 @@ public class CustomerService {
 
         Customer customer = customerRepository.getById(customerId);
 
-        return customer;
+        if(customer.){
+            throw new InformationNotFound("No customers where found");
+        } else {
+            return customer;
+        }
+
 
     }
 
