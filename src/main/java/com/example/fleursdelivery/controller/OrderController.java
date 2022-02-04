@@ -1,5 +1,6 @@
 package com.example.fleursdelivery.controller;
 
+import com.example.fleursdelivery.model.Flower;
 import com.example.fleursdelivery.model.Order;
 import com.example.fleursdelivery.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class OrderController {
         orderService.deleteOrder(customerId);
     }
 
-
-
+//    @GetMapping(path = "/flowers")
+//    public List<Flower> getAllFlower(){
+//
+//        return orderService.getAllFlowers();
+//    }
 }
