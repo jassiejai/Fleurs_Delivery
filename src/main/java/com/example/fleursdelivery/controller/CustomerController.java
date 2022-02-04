@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{customerId}")
-    public Optional<Customer> getCustomer(@PathVariable Long customerId){
+    public Customer getCustomer(@PathVariable(value = "customerId") Long customerId){
         System.out.println("Got customer");
 
         return customerService.getCustomer(customerId);
@@ -80,8 +80,8 @@ public class CustomerController {
 
         return customerService.updateOrder(orderId, orderObject);
     }
-    @DeleteMapping ("/order/{orderId}")
-    public void deleteOrder(@PathVariable(value = "orderId") Long orderId){
+    @DeleteMapping ("/customer/{customerId}/order/{orderId}")
+    public void deleteOrder(@PathVariable(value = "orderId") Long orderId, @PathVariable(value = "customerId") String customerId){
 
         System.out.println("Deleted order of " + orderId);
 

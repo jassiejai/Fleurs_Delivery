@@ -42,15 +42,17 @@ public class CustomerService {
     }
 
 
-    public Optional<Customer> getCustomer(Long customerId){
+    public Customer getCustomer(Long customerId){
 
-       Optional<Customer> customer = customerRepository.findById(customerId);
+      Customer customer = customerRepository.getById(customerId);
 
-        if(customer.isPresent()){
-            return customer;
-        } else {
-            throw new InformationNotFound("No customer was found with the Id of " + customerId);
-        }
+
+      return customer;
+//        if(customer.isPresent()){
+//            return customer;
+//        } else {
+//            throw new InformationNotFound("No customer was found with the Id of " + customerId);
+//        }
 
 
     }
@@ -91,10 +93,12 @@ public class CustomerService {
 
     public void deleteCustomer(Long customerId){
 
-        Customer dltCustomer = customerRepository.getById(customerId);
+        Customer customer = customerRepository.getById(customerId);
 
 //        customerRepository.delete(dltCustomer.get());
-        customerRepository.delete(dltCustomer);
+        customer.toString();
+//        Customer dltCustomer = customerRepository.delete(customer);
+
     }
 
     public Order createOrder (Long customerId, Order orderObject){
@@ -128,6 +132,7 @@ public class CustomerService {
 
         Order dltOrder = orderRepository.getById(orderId);
 
+        System.out.println(dltOrder);
         return dltOrder;
 
     }
