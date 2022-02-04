@@ -86,6 +86,15 @@ A Employee should be able to update flower order for customer using customer id
 | DELETE  | api/order/{orderId} | DeleteCustomerOrder  |
 
 
+#### Technologies Used
+
+| Tech |  
+| ------------- | 
+|     IntelliJ       | 
+|     Postman       | 
+|     PgAdmin4       |
+|    Spring       | 
+
 ###### Updates to come 
 
-I hope to be able to show all the flowers in the orders table. This way you are able to choose the specific flowerIds for the order
+I hope to be able to show all the flowers in the orders table. This way you are able to choose the specific flowerIds for the order. there is an issue with the using exception
